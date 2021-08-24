@@ -21,24 +21,19 @@ BATCH = []
 async def start(c, m, cb=False):
     if not cb:
         send_msg = await m.reply_text("**Processing...**", quote=True)
+        await c.send_message(LOG_CHANNEL, f"{m.from_user.mention} started the bot")
 
     
     # start text
-    text = f"""Hey! {m.from_user.mention(style='md')}
-
-💡 ** I am Telegram File Store Bot**
-
-`You can store your Telegram Media for permanent Link!`
+    text = """
+سلام، من ربات آرشیو فایل های رسانه‌ی اینترنتی دی ال مکوین هستم
 """
 
     # Buttons
     buttons = [
         [
-            InlineKeyboardButton('My Father 👨‍✈️', url=f"https://t.me/mrmacvin"),
-            InlineKeyboardButton('Help 💡', callback_data="help")
-        ],
-        [
-            InlineKeyboardButton('About 📕', callback_data="about")
+            InlineKeyboardButton('کانال دی ال مکوین', url=f"https://t.me/dlmacvin_new"),
+            InlineKeyboardButton('Mr Macvin', url=f"https://t.me/mrmacvin")
         ]
     ]
 
