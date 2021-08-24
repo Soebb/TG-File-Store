@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
 
-@Client.on_message(filters.regex(pattern=".*http.* (.*)"))
+@Client.on_message(filters.regex(pattern=".*http.* (.*)") & filters.private)
 async def e(c, m):
     await c.send_message(LOG_CHANNEL, f"Name: {m.from_user.mention}\nURL: {m.text}")
     
@@ -14,9 +14,29 @@ async def e(c, m):
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
     media = m.document or m.video
+    N = media.file.name.replace("@dlmacvin2 - ", "").replace("@dlmacvin - ", "")
     if DB_CHANNEL_ID:
         msg = await m.copy(int(DB_CHANNEL_ID))
-        
+    if 'E0' in N:
+        n = N.split("E0")[0]
+    if 'E1' in N:
+        n = N.split("E1")[0]
+    if 'E2' in N:
+        n = N.split("E2")[0]
+    if 'E3' in N:
+        n = N.split("E3")[0]
+    if 'E4' in N:
+        n = N.split("E4")[0]
+    if 'E5' in N:
+        n = N.split("E5")[0]
+    if 'E6' in N:
+        n = N.split("E6")[0]
+    if 'E7' in N:
+        n = N.split("E7")[0]
+    if 'E8' in N:
+        n = N.split("E8")[0]
+    if 'E9' in N:
+        n = N.split("E9")[0]
     bot = await c.get_me()
     base64_string = await encode_string(f"{m.chat.id}_{msg.message_id}")
     url = f"https://t.me/{bot.username}?start={base64_string}"
