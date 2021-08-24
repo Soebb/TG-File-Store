@@ -56,7 +56,6 @@ async def close_cb(c, m):
 @Client.on_callback_query(filters.regex('^about$'))
 async def about_cb(c, m):
     await m.answer()
-    owner = await c.get_users(int(OWNER_ID))
     bot = await c.get_me()
 
     # about text
@@ -68,7 +67,7 @@ async def about_cb(c, m):
 
 🧰 𝐅𝐫𝐚𝐦𝐞𝐰𝐨𝐫𝐤: [Pyrogram](https://github.com/pyrogram/pyrogram)
 
-👨‍💻 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: {owner.mention(style='md')}
+👨‍💻 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: 
 
 📢 𝐂𝐡𝐚𝐧𝐧𝐞𝐥: [NS BOT UPDATES](https://t.me/Ns_bot_updates)
 
