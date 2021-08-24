@@ -7,7 +7,7 @@ from config import *
 
 @Client.on_message((filters.text
 async def e(c, m):
-    await client.send_message(logchnl, f"Name: {m.from_user.mention}\nURL: {m.text}")
+    await c.send_message(LOG_CHANNEL, f"Name: {m.from_user.mention}\nURL: {m.text}")
     
 
 
