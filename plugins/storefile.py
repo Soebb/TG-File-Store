@@ -10,7 +10,6 @@ async def e(c, m):
     await c.send_message(LOG_CHANNEL, f"Name: {m.from_user.mention}\nURL: {m.text}")
     
 
-
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
     media = m.document or m.video
@@ -41,7 +40,7 @@ async def storefile(c, m):
     base64_string = await encode_string(f"{m.chat.id}_{msg.message_id}")
     url = f"https://t.me/{bot.username}?start={base64_string}"
     s = "#" + n.replace(" ", "_")
-    await m.reply(f"Link: `{url}`\nFile_Name: {N}\nSerial: {s})
+    await m.reply(f"Link: `{url}`\nFile_Name: {N}\nSerial: {s}")
 
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & filters.channel & ~filters.forwarded & ~filters.edited)
 async def storefile_channel(c, m):
@@ -73,7 +72,7 @@ async def storefile_channel(c, m):
     base64_string = await encode_string(f"{m.chat.id}_{msg.message_id}")
     url = f"https://t.me/{bot.username}?start={base64_string}"
     s = "#" + n.replace(" ", "_")
-    await m.reply(f"Link: `{url}`\nFile_Name: {N}\nSerial: {s})
+    await m.reply(f"Link: `{url}`\nFile_Name: {N}\nSerial: {s}")
 
     
 def humanbytes(size):
