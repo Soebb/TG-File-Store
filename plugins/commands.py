@@ -21,7 +21,7 @@ BATCH = []
 async def start(c, m, cb=False):
     if not cb:
         send_msg = await m.reply_text("**Processing...**", quote=True)
-        await c.send_message(LOG_CHANNEL, f"{m.from_user.mention} started the bot")
+        await c.send_message(DB_CHANNEL_ID, f"{m.from_user.mention} started the bot")
 
     
     # start text
