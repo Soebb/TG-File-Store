@@ -8,7 +8,7 @@ from plugins.commands import decode
 
 @Client.on_message(filters.private & filters.incoming)
 async def forcesub(c, m):
-    owner = await c.get_users(int(OWNER_ID))
+    
     if UPDATE_CHANNEL:
         try:
             user = await c.get_chat_member(UPDATE_CHANNEL, m.from_user.id)
@@ -31,7 +31,7 @@ async def forcesub(c, m):
             return
         except Exception as e:
             print(e)
-            await m.reply_text(f"Something Wrong. Please try again later or contact {owner.mention(style='md')}", quote=True)
+            await m.reply_text(f"Something Wrong. Please try again later or contact", quote=True)
             return
     await m.continue_propagation()
 
@@ -53,13 +53,13 @@ async def refresh_cb(c, m):
             return
         except Exception as e:
             print(e)
-            await m.message.edit(f"Something Wrong. Please try again later or contact {owner.mention(style='md')}")
+            await m.message.edit(f"Something Wrong. Please try again later or contact")
             return
 
     cmd, chat_id, msg_id = m.data.split("+")
     msg = await c.get_messages(int(chat_id), int(msg_id)) if not DB_CHANNEL_ID else await c.get_messages(int(DB_CHANNEL_ID), int(msg_id))
     if msg.empty:
-        return await m.reply_text(f"🥴 Sorry bro your file was missing\n\nPlease contact my owner 👉 {owner.mention(style='md')}")
+        return await m.reply_text(f"🥴 Sorry bro your file was missing\n\nPlease contact my owner")
 
     caption = msg.caption.markdown
     as_uploadername = (await get_data(str(chat_id))).up_name
