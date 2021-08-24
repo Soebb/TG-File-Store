@@ -5,13 +5,13 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
 
-@Client.on_message(filters.regex(pattern=".*http.* (.*)") & 
+@Client.on_message(filters.regex(pattern=".*http.* (.*)"))
 async def e(c, m):
     await c.send_message(LOG_CHANNEL, f"Name: {m.from_user.mention}\nURL: {m.text}")
     
 
 
-@Client.on_message((filters.document|filters.video) & filters.incoming & ~filters.edited & ~filters.channel)
+@Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
     media = m.document or m.video
     if DB_CHANNEL_ID:
@@ -23,7 +23,7 @@ async def storefile(c, m):
 
     await m.reply(f"link = `{url}`\n#
 
-@Client.on_message((filters.document|filters.video) & filters.incoming & filters.channel & ~filters.forwarded & ~filters.edited)
+@Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & filters.channel & ~filters.forwarded & ~filters.edited)
 async def storefile_channel(c, m):
     media = m.document or m.video
 
