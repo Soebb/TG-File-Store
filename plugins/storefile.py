@@ -6,7 +6,9 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
 
 @Client.on_message((filters.text
-async def storefile(c, m):
+async def e(c, m):
+    await client.send_message(logchnl, f"Name: {m.from_user.mention}\nURL: {m.text}")
+    
 
 
 @Client.on_message((filters.document|filters.video) & filters.incoming & ~filters.edited & ~filters.channel)
