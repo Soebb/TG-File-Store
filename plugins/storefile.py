@@ -5,7 +5,10 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
 
-#################################### FOR PRIVATE ################################################
+@Client.on_message((filters.text
+async def storefile(c, m):
+
+
 @Client.on_message((filters.document|filters.video) & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
     media = m.document or m.video
