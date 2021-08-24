@@ -4,7 +4,6 @@ from .commands import encode_string
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
-    
 
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
@@ -37,7 +36,7 @@ async def storefile(c, m):
     url = f"https://t.me/{bot.username}?start={base64_string}"
     T = "#" + n.replace(" ", "_")
     s = T.replace("_ ", "")
-    await m.reply(f"*Link*:\n`{url}`\n\n*File_Name*: {N}\n\n*Serial*: {s}")
+    await m.reply(f"Link👇\n{url}\n\nFileName :\n{N}\n\n{s}")
 
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & filters.channel & ~filters.forwarded & ~filters.edited)
 async def storefile_channel(c, m):
@@ -70,7 +69,7 @@ async def storefile_channel(c, m):
     url = f"https://t.me/{bot.username}?start={base64_string}"
     T = "#" + n.replace(" ", "_")
     s = T.replace("_ ", "")
-    await m.reply(f"*Link*:\n`{url}`\n\n*File_Name*: {N}\n\n*Serial*: {s}")
+    await m.reply(f"Click Link👇\n{url}\n\nFileName :\n{N}\n\n{s}")
 
 def humanbytes(size):
     if not size:
