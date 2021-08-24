@@ -22,24 +22,19 @@ async def start(c, m, cb=False):
     if not cb:
         send_msg = await m.reply_text("**Processing...**", quote=True)
 
-    owner = await c.get_users(int(OWNER_ID))
-    owner_username = owner.username if owner.username else 'Ns_bot_updates'
-
+    
     # start text
     text = f"""Hey! {m.from_user.mention(style='md')}
 
 💡 ** I am Telegram File Store Bot**
 
 `You can store your Telegram Media for permanent Link!`
-
-
-**👲 Maintained By:** {owner.mention(style='md')}
 """
 
     # Buttons
     buttons = [
         [
-            InlineKeyboardButton('My Father 👨‍✈️', url=f"https://t.me/{owner_username}"),
+            InlineKeyboardButton('My Father 👨‍✈️', url=f"https://t.me/mrmacvin"),
             InlineKeyboardButton('Help 💡', callback_data="help")
         ],
         [
@@ -73,8 +68,7 @@ async def start(c, m, cb=False):
                 msg = await c.get_messages(int(chat_id), int(msg_id)) if not DB_CHANNEL_ID else await c.get_messages(int(DB_CHANNEL_ID), int(msg_id))
 
                 if msg.empty:
-                    owner = await c.get_users(int(OWNER_ID))
-                    return await m.reply_text(f"🥴 Sorry bro your file was deleted by file owner or bot owner\n\nFor more help contact my owner 👉 {owner.mention(style='md')}")
+                    return await m.reply_text(f"🥴 Sorry bro your file was deleted by file owner or bot owner\n\nFor more help contact my owner")
 
                 await msg.copy(m.from_user.id)
                 await asyncio.sleep(1)
@@ -84,7 +78,7 @@ async def start(c, m, cb=False):
         msg = await c.get_messages(int(chat_id), int(msg_id)) if not DB_CHANNEL_ID else await c.get_messages(int(DB_CHANNEL_ID), int(msg_id))
 
         if msg.empty:
-            return await send_msg.edit(f"🥴 Sorry bro your file was deleted by file owner or bot owner\n\nFor more help contact my owner 👉 {owner.mention(style='md')}")
+            return await send_msg.edit(f"🥴 Sorry bro your file was deleted by file owner or bot owner\n\nFor more help contact my owner")
         
         caption = f"{msg.caption.markdown}\n\n\n" if msg.caption else ""
         as_uploadername = (await get_data(str(chat_id))).up_name
