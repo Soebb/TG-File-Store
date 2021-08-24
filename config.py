@@ -9,5 +9,3 @@ IS_PRIVATE = os.environ.get("IS_PRIVATE",False) # any input is ok But True prefe
 OWNER_ID = int(os.environ.get("OWNER_ID"))
 UPDATE_CHANNEL = os.environ.get('UPDATE_CHANNEL', '')
 AUTH_USERS = list(int(i) for i in os.environ.get("AUTH_USERS", "").split(" ")) if os.environ.get("AUTH_USERS") else []
-if OWNER_ID not in AUTH_USERS:
-    AUTH_USERS.append(OWNER_ID)
