@@ -8,7 +8,7 @@ from config import *
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & ~filters.edited & ~filters.channel)
 async def storefile(c, m):
     media = m.document or m.video
-    N = media.file_name.replace("@dlmacvin2 - ", "").replace("@dlmacvin - ", "")
+    N = media.file_name.replace("@dlmacvin2 - ", "").replace("@dlmacvin - ", "").replace(".mp4", "").replace(".mkv", "")
     if DB_CHANNEL_ID:
         msg = await m.copy(int(DB_CHANNEL_ID))
     if 'E0' in N:
@@ -36,7 +36,7 @@ async def storefile(c, m):
     url = f"https://t.me/{bot.username}?start={base64_string}"
     T = "#" + n.replace(" ", "_")
     s = T.replace("_ ", "")
-    await m.reply(f"Link👇\n{url}\n\nFileName :\n{N}\n\n{s}")
+    await m.reply(f"Click Link👇\n{url}\n\nFileName :\n{N}\n\n{s}")
 
 @Client.on_message((filters.document|filters.video) & sudofilter & filters.incoming & filters.channel & ~filters.forwarded & ~filters.edited)
 async def storefile_channel(c, m):
