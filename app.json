@@ -24,14 +24,6 @@
       "description": "Get this value from https://my.telegram.org",
       "value": ""
     },
-    "DB_CHANNEL_ID": {
-      "description": "add a telegram channel ID as the database",
-      "value": ""
-    },
-    "LOG_CHANNEL": {
-      "description": "another channel ID",
-      "value": ""
-    },
     "API_HASH": {
       "description": "Get this value from https://my.telegram.org",
       "value": ""
